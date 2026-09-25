@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Flask Auth Demo{% endblock %}
+{% block content %}
+<h1>A working authentication flow, not a mockup</h1>
+<p class="lede">
+  Register an account, log in, and visit the dashboard. Log out, then try
+  the dashboard again — the route protection above is real, and so is the
+  session state shown in the status bar.
+</p>
+
+<ul class="feature-list">
+  <li>
+    <span class="tag">hashing</span>
+    <span class="desc">Passwords are hashed with Werkzeug before they ever touch the database.</span>
+  </li>
+  <li>
+    <span class="tag">sessions</span>
+    <span class="desc">Login state is tracked server-side with Flask's signed session cookie.</span>
+  </li>
+  <li>
+    <span class="tag">routing</span>
+    <span class="desc">A login_required decorator blocks the dashboard route when signed out.</span>
+  </li>
+  <li>
+    <span class="tag">structure</span>
+    <span class="desc">Organised as auth and main blueprints instead of one flat file.</span>
+  </li>
+</ul>
+{% endblock %}

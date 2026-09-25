@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{% block title %}Flask Auth Demo{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="statusbar">
+  <div class="session">
+    {% if g.user %}
+      <span class="dot on" aria-hidden="true"></span>
+      <span>session: signed in as <strong>{{ g.user['username'] }}</strong></span>
+    {% else %}
+      <span class="dot" aria-hidden="true"></span>
+      <span>session: signed out</span>
+    {% endif %}
+  </div>
+  <div>flask-authentication-demo</div>
+</div>
+
+<nav class="primary" aria-label="Primary">
+  <a class="brand" href="{{ url_for('main.index') }}">Auth Demo</a>
+  {% if g.user %}
+    <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
+    <a href="{{ url_for('auth.logout') }}">Log out</a>
+  {% else %}
+    <a href="{{ url_for('auth.login') }}">Log in</a>
+    <a href="{{ url_for('auth.register') }}">Register</a>
+  {% endif %}
+</nav>
+
+<main id="main">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="flash-list">
+        {% for message in messages %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Log in — Auth Demo{% endblock %}
+{% block content %}
+<h1>Log in</h1>
+<p class="lede">Use the account you registered, or create one first.</p>
+
+<div class="panel">
+  <h2>credentials</h2>
+  <form method="post" action="{{ url_for('auth.login') }}" novalidate>
+    <div class="field">
+      <label for="username">username</label>
+      <input type="text" id="username" name="username" autocomplete="username" required autofocus>
+    </div>
+    <div class="field">
+      <label for="password">password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required>
+    </div>
+    <button type="submit">Log in</button>
+  </form>
+  <p class="panel-footer">No account yet? <a href="{{ url_for('auth.register') }}">Register</a></p>
+</div>
+{% endblock %}

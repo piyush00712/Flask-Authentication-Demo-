@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<p class="lede">Welcome, <strong>{{ user['username'] }}</strong>. This page is only visible to logged-in users — the <code>@login_required</code> decorator redirects anyone else to the login page.</p>
+
+<div class="session-card">
+  <strong>{{ user['username'] }}</strong>
+  <dl>
+    <dt>status</dt>
+    <dd>authenticated</dd>
+    <dt>route</dt>
+    <dd>/dashboard</dd>
+    <dt>protected by</dt>
+    <dd>@login_required</dd>
+  </dl>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Register — Auth Demo{% endblock %}
+{% block content %}
+<h1>Create an account</h1>
+<p class="lede">Your password is hashed before it's stored — never saved as plain text.</p>
+
+<div class="panel">
+  <h2>new account</h2>
+  <form method="post" action="{{ url_for('auth.register') }}" novalidate>
+    <div class="field">
+      <label for="username">username</label>
+      <input type="text" id="username" name="username" autocomplete="username" required autofocus>
+    </div>
+    <div class="field">
+      <label for="password">password</label>
+      <input type="password" id="password" name="password" autocomplete="new-password" required>
+    </div>
+    <button type="submit">Register</button>
+  </form>
+  <p class="panel-footer">Already have an account? <a href="{{ url_for('auth.login') }}">Log in</a></p>
+</div>
+{% endblock %}
